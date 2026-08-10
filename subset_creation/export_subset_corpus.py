@@ -24,3 +24,14 @@ for mls in subset:
 print(f"Copied {copied} corpus files")
 if missing:
     print(f"Missing {len(missing)} files:", missing[:10], "..." if len(missing) > 10 else "")
+
+# Also copy description.json files for later failure analysis
+desc_copied = 0
+for mls in subset:
+    filename = f"{mls}_description.json"
+    src = os.path.join(source_dir, filename)
+    dst = os.path.join(dest_dir, filename)
+    if os.path.exists(src):
+        shutil.copy2(src, dst)
+        desc_copied += 1
+print(f"Copied {desc_copied} description.json files")
