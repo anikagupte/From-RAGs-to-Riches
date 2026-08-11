@@ -58,7 +58,7 @@ queries['q12'] = ("SELECT mls FROM property WHERE rms_sqft > %s AND fireplaces >
                    [3000, 2])
 
 # 13. Row house, 2 bed 1.5 bath, under $425,000
-queries['q13'] = ("SELECT mls FROM property WHERE type ILIKE %s AND beds = %s AND full_baths = %s AND half_baths = %s AND list_price < %s",
+queries['q13'] = ("SELECT mls FROM property WHERE type ILIKE %s AND beds = %s AND full_baths = %s AND half_baths >= %s AND list_price < %s",
                    ['%Row%', 2, 1, 1, 425000])
 
 # 14. Bungalow with a legal basement suite (mapped to basement = Finished)
