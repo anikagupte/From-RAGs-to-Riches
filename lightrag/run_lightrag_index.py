@@ -15,10 +15,12 @@ async def build_rag():
         working_dir=WORKING_DIR,
         llm_model_func=ollama_model_complete,
         llm_model_name="qwen2.5:7b",
-        llm_model_max_async=2,
+        llm_model_max_async=1,
+        timeout=900,
         llm_model_kwargs={
             "host": OLLAMA_HOST,
             "options": {"num_ctx": 32768},
+            "timeout": 900,
         },
         embedding_func=EmbeddingFunc(
             embedding_dim=1024,
@@ -27,6 +29,7 @@ async def build_rag():
                 texts,
                 embed_model="mxbai-embed-large",
                 host=OLLAMA_HOST,
+                timeout=300,
             ),
         ),
     )
@@ -34,7 +37,7 @@ async def build_rag():
     return rag
 
 async def index_corpus(rag):
-    files = [f for f in os.listdir(CORPUS_DIR) if f.endswith("_corpus.txt")]
+    files = [f for f in os.listdir(CORPUS_DIR) if f.endswith("_corpus.txt")][:5]
     print(f"Found {len(files)} corpus files to index")
 
     for i, filename in enumerate(files):
