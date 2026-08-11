@@ -72,7 +72,7 @@ queries['q16'] = ("SELECT mls FROM property WHERE is_condo = true AND rms_sqft <
 
 # 17. Split-level home, 3 baths, budget between $700K and $800K
 queries['q17'] = ("SELECT mls FROM property WHERE arch_style ILIKE %s AND full_baths = %s AND list_price BETWEEN %s AND %s",
-                   ['%Split Level%', 3, 700000, 800000])
+                   ['%Split%', 3, 700000, 800000])
 
 # 18. Detached house with a fireplace, at least 2,200 sq ft, under $900,000
 queries['q18'] = ("SELECT mls FROM property WHERE type ILIKE %s AND fireplaces >= %s AND rms_sqft >= %s AND list_price < %s",
